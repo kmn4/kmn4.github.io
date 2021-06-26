@@ -1,0 +1,29 @@
+baseURL = "https://www.kamasaki.net/"
+languageCode = "ja-jp"
+theme = "anatole"
+title = "9時間睡眠"
+
+[params]
+title = "9時間睡眠"
+author = "kamasaki.net"
+description = "Permanent newbie in CS"
+profilePicture = "images/zero.svg"
+customCss = ["css/custom.css"]
+doNotLoadAnimations = true
+
+[[params.socialIcons]]
+icon = "fab fa-github"
+title = "GitHub"
+url = "https://github.com/kmn4"
+
+[[menu.main]]
+name = "Top"
+identifier = "top"
+weight = 100
+url = "/"
+
+[[menu.main]]
+name = "About"
+identifier = "about"
+weight = 200
+url = "/about"
