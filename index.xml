@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>9時間睡眠</title>
+    <link>https://www.kamasaki.net/</link>
+    <description>Recent content on 9時間睡眠</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 26 Jun 2021 16:08:07 +0900</lastBuildDate><atom:link href="https://www.kamasaki.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://www.kamasaki.net/posts/test/</link>
+      <pubDate>Sat, 26 Jun 2021 16:08:07 +0900</pubDate>
+      
+      <guid>https://www.kamasaki.net/posts/test/</guid>
+      
+        <description>てすと
+ああああ
+   key value     k v !    sealed trait Exp[A] case object True extends Exp[Boolean] case object Flase extends Exp[Boolean] case class Eq(e1: Exp[Int], e2: Exp[Int]) extends Exp[Boolean] </description>
+      
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://www.kamasaki.net/about/</link>
+      <pubDate>Sat, 26 Jun 2021 16:06:49 +0900</pubDate>
+      
+      <guid>https://www.kamasaki.net/about/</guid>
+      
+        <description>計算機科学専攻の大学院生です．</description>
+      
+    </item>
+    
+  </channel>
+</rss>
