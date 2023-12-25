@@ -1,12 +1,12 @@
 baseURL = "https://www.kamasaki.net/"
 languageCode = "ja-jp"
 theme = "anatole"
-title = "9時間睡眠"
+title = "kamasaki.net"
 
 [params]
-title = "9時間睡眠"
-author = "kamasaki.net"
-description = "Permanent newbie in CS"
+title = "kamasaki.net"
+author = "kamasaki"
+description = ""
 profilePicture = "images/zero.svg"
 customCss = ["css/custom.css"]
 doNotLoadAnimations = true
