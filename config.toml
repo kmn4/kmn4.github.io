@@ -1,4 +1,4 @@
-baseURL = "https://www.kamasaki.net/"
+baseURL = "https://blog.kamasaki.net/"
 languageCode = "ja-jp"
 theme = "anatole"
 title = "kamasaki.net"
