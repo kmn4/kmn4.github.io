@@ -27,3 +27,6 @@ name = "About"
 identifier = "about"
 weight = 200
 url = "/about"
+
+[markup.goldmark.renderer]
+hardWraps = true
