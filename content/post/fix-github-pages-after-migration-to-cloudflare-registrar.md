@@ -1,7 +1,7 @@
 ---
 title: "Cloudflare 移管後に GitHub Pages が壊れた"
 date: 2023-12-26T20:57:50+09:00
-draft: true
+draft: false
 ---
 
 Google Domains が Squarespace に売却されたので、kamasaki.net を Cloudflare に移管した。
