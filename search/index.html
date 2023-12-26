@@ -1,17 +1,17 @@
 <!doctype html><html lang=ja-jp dir=ltr>
 <head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content>
-<title>Categories</title>
-<link rel=canonical href=https://blog.kamasaki.net/categories/>
-<link rel=stylesheet href=/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css><meta property="og:title" content="Categories">
+<title>Search</title>
+<link rel=canonical href=https://blog.kamasaki.net/search/>
+<link rel=stylesheet href=/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css><meta property="og:title" content="Search">
 <meta property="og:description" content>
-<meta property="og:url" content="https://blog.kamasaki.net/categories/">
+<meta property="og:url" content="https://blog.kamasaki.net/search/">
 <meta property="og:site_name" content="kamasaki.net">
-<meta property="og:type" content="website"><meta property="og:updated_time" content=" 2023-12-26T20:57:50+09:00 ">
-<meta name=twitter:title content="Categories">
-<meta name=twitter:description content><link rel=alternate type=application/rss+xml href=https://blog.kamasaki.net/categories/index.xml>
+<meta property="og:type" content="article"><meta property="article:section" content="Page">
+<meta name=twitter:title content="Search">
+<meta name=twitter:description content><link rel=alternate type=application/json href=https://blog.kamasaki.net/search/index.json><link rel=preload href=/search/index.json as=fetch crossorigin=anonymous>
 </head>
-<body>
+<body class=template-search>
 <script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
 <button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=メニューを開く・閉じる>
@@ -45,7 +45,7 @@
 <span>Archives</span>
 </a>
 </li>
-<li>
+<li class=current>
 <a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
 <span>Search</span>
 </a>
@@ -62,30 +62,20 @@
 </div>
 </ol>
 </aside>
-<aside class="sidebar right-sidebar sticky">
-<form action=/search/ class="search-form widget">
+<main class="main full-width">
+<form action=/search/ class=search-form data-json=/search/index.json>
 <p>
 <label>検索</label>
-<input name=keyword required placeholder=入力...>
+<input name=keyword placeholder=入力...>
+</p>
 <button title=検索><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
 </button>
-</p>
 </form>
-</aside>
-<main class="main full-width">
-<header>
-<h3 class=section-title>
-Section
-</h3>
-<div class=section-card>
-<div class=section-details>
-<h3 class=section-count>0 pages</h3>
-<h1 class=section-term>Categories</h1>
+<div class=search-result>
+<h3 class="search-result--title section-title"></h3>
+<div class="search-result--list article-list--compact"></div>
 </div>
-</div>
-</header>
-<section class=article-list--compact>
-</section>
+<script>window.searchResultTitleTemplate="#PAGES_COUNT 件 （#TIME_SECONDS 秒）"</script><script type=text/javascript src=/ts/search.js defer></script>
 <footer class=site-footer>
 <section class=copyright>
 &copy;
