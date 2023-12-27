@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on kamasaki.net</title><link>https://blog.kamasaki.net/post/</link><description>Recent content in Posts on kamasaki.net</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 26 Dec 2023 20:57:50 +0900</lastBuildDate><atom:link href="https://blog.kamasaki.net/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Cloudflare へのドメイン移管後に GitHub Pages が壊れた</title><link>https://blog.kamasaki.net/post/fix-github-pages-after-migration-to-cloudflare-registrar/</link><pubDate>Tue, 26 Dec 2023 20:57:50 +0900</pubDate><guid>https://blog.kamasaki.net/post/fix-github-pages-after-migration-to-cloudflare-registrar/</guid><description>&lt;p>Google Domains が Squarespace に売却されたので、kamasaki.net を Cloudflare に移管した。&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on kamasaki.net</title><link>https://blog.kamasaki.net/post/</link><description>Recent content in Posts on kamasaki.net</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Wed, 27 Dec 2023 21:56:43 +0900</lastBuildDate><atom:link href="https://blog.kamasaki.net/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo のテーマを Stack に変えた</title><link>https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/</link><pubDate>Wed, 27 Dec 2023 21:56:43 +0900</pubDate><guid>https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/</guid><description>&lt;p>2 年半前、持て余していたドメインを使うため雑に構築し (、放置してい) た本ブログだが、なんとなく &lt;a class="link" href="https://github.com/lxndrblz/anatole" target="_blank" rel="noopener"
+>Anatole&lt;/a> を使っていた。&lt;br>
+でも色々と不満点があったため、以下の要件のもと別テーマに移行することとした。&lt;/p>
+&lt;ul>
+&lt;li>PC から見たときに記事本文の左右に十分な余白があり読みやすい&lt;/li>
+&lt;li>検索機能がある&lt;/li>
+&lt;li>タグ機能がある&lt;/li>
+&lt;li>投稿年から記事を探せる&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a class="link" href="https://themes.gohugo.io/tags/blog/" target="_blank" rel="noopener"
+>Hugo Themes&lt;/a> を眺め、スターが多く上記を満たし見た目もいい感じなものを探すと &lt;a class="link" href="https://themes.gohugo.io/themes/hugo-theme-stack/" target="_blank" rel="noopener"
+>Stack&lt;/a> が見つかった。&lt;/p>
+&lt;p>ちなみに現状だとタグ機能も投稿年から探す機能も使っていないが、これは記事が少なすぎてまだ必要ないため。増えたら使う。&lt;/p>
+&lt;h2 id="導入と設定の方法">導入と設定の方法&lt;/h2>
+&lt;p>Ubuntu なら:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-console" data-lang="console">&lt;span class="gp">$ &lt;/span>sudo apt install golang-go hugo &lt;span class="c1"># Go が必須&lt;/span>
+&lt;span class="gp">$ &lt;/span>hugo mod init kamasaki.net/blog
+&lt;span class="gp">$ &lt;/span>hugo mod get github.com/CaiJimmy/hugo-theme-stack/v3 &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> hugo mod tidy
+&lt;span class="gp">$ &lt;/span>mkdir -p config/_default &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> cat &amp;lt;&amp;lt;EOF &amp;gt; config/_default/module.toml
+&lt;span class="go">[[imports]]
+&lt;/span>&lt;span class="go">path = &amp;#34;github.com/CaiJimmy/hugo-theme-stack/v3&amp;#34;
+&lt;/span>&lt;span class="go">EOF
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>設定は &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack-starter/tree/master/config/_default" target="_blank" rel="noopener"
+>hugo-theme-stack-starter&lt;/a> を参考にすればよい。&lt;/p>
+&lt;h2 id="日本語フォントが変">日本語フォントが変&lt;/h2>
+&lt;p>Android の Firefox から見ると普通なのに、Windows の Firefox から見るとフォントに中国を感じる。&lt;br>
+&lt;code>about:preferences&lt;/code> から「ウェブページが指定したフォントを優先する」のチェックを外すと日本語らしくなるので、Stack がおかしなフォントを指定しているようだ。&lt;/p>
+&lt;p>&lt;img src="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/zh-font.png"
+width="237"
+height="145"
+srcset="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/zh-font_hu2a1319d88628e092800b62a71a21858a_10403_480x0_resize_box_3.png 480w, https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/zh-font_hu2a1319d88628e092800b62a71a21858a_10403_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="中国を感じるフォント"
+class="gallery-image"
+data-flex-grow="163"
+data-flex-basis="392px"
+>&lt;/p>
+&lt;p>開発者ツールから有効なスタイルを調べると怪しいフォントを発見。中国語の言語コードって &lt;code>zh&lt;/code> なんですね。&lt;br>
+消してみると日本語フォントになったため、これを使わないように Stack を設定してやろう。&lt;/p>
+&lt;p>&lt;img src="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/--zh-font-family.png"
+width="355"
+height="202"
+srcset="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/--zh-font-family_hu6340b682662a7df7e8067b7c870543e5_15096_480x0_resize_box_3.png 480w, https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/--zh-font-family_hu6340b682662a7df7e8067b7c870543e5_15096_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="&amp;ndash;zh-font-family"
+class="gallery-image"
+data-flex-grow="175"
+data-flex-basis="421px"
+>&lt;/p>
+&lt;p>&lt;a class="link" href="https://stack.jimmycai.com/config/header-footer#example-custom-font-family-for-article-content" target="_blank" rel="noopener"
+>ドキュメント&lt;/a>にカスタマイズの具体例が載っているので参考にする。&lt;br>
+今回は &lt;code>--zh-font-family&lt;/code> を Noto Sans JP にしてしまう。&lt;br>
+&lt;code>layouts/partials/head/custom.html&lt;/code> に以下のようなコードを置いてやろう。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="c">/* Overwrite CSS variable */&lt;/span>
+&lt;span class="p">:&lt;/span>&lt;span class="nd">root&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nv">--zh-font-family&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Noto Sans JP&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="kd">function&lt;/span> &lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="kr">const&lt;/span> &lt;span class="nx">customFont&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createElement&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;link&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="nx">customFont&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">href&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;amp;display=swap&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="nx">customFont&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;text/css&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="nx">customFont&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">rel&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;stylesheet&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="nb">document&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">head&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">appendChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">customFont&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="p">}());&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ビルドし直すと Noto Sans JP が使われるようになった。&lt;/p>
+&lt;p>&lt;img src="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/noto-sans-jp.png"
+width="173"
+height="69"
+srcset="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/noto-sans-jp_hu07083d71c72cc42be88d99cdbac85c09_6541_480x0_resize_box_3.png 480w, https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/assets/noto-sans-jp_hu07083d71c72cc42be88d99cdbac85c09_6541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="みんな大好き Noto Sans JP"
+class="gallery-image"
+data-flex-grow="250"
+data-flex-basis="601px"
+>&lt;/p>
+&lt;p>しかし、言語コードとして &lt;code>ja-jp&lt;/code> が指定されていたら自動で日本語フォントを使って欲しいので、暇があったら PR を出したいところ。&lt;/p>
+&lt;h2 id="toc-を表示できない">TOC を表示できない&lt;/h2>
+&lt;p>&lt;a class="link" href="https://discourse.gohugo.io/t/why-does-markup-tableofcontents-startlevel-default-to-2/33963" target="_blank" rel="noopener"
+>SEO が理由で&lt;/a> &lt;code>hugo-theme-stack-starter&lt;/code> の (Hugo の?) 初期設定だとレベル 1 の見出しは TOC に現れません&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="p">[&lt;/span>&lt;span class="nx">tableOfContents&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;span class="nx">endLevel&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">4&lt;/span>
+&lt;span class="nx">ordered&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;span class="nx">startLevel&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="mi">2&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>見出しはレベル 2 以上にしましょう。&lt;/p>
+&lt;h2 id="おまけ">おまけ&lt;/h2>
+&lt;p>&lt;a class="link" href="https://gohugo.io/content-management/shortcodes/" target="_blank" rel="noopener"
+>Shortcodes&lt;/a>の使用例として、最近聴いてよかった曲を置いておく。&lt;/p>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/yfrBPWDTCpE"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>リンク先だと「タイトルがページ内の唯一の &lt;code>&amp;lt;h1&amp;gt;&lt;/code> であるべき」と言われているが、Stack はタイトルに &lt;code>&amp;lt;h2&amp;gt;&lt;/code> を使っているようで少し不自然だ。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Cloudflare へのドメイン移管後に GitHub Pages が壊れた</title><link>https://blog.kamasaki.net/post/fix-github-pages-after-migration-to-cloudflare-registrar/</link><pubDate>Tue, 26 Dec 2023 20:57:50 +0900</pubDate><guid>https://blog.kamasaki.net/post/fix-github-pages-after-migration-to-cloudflare-registrar/</guid><description>&lt;p>Google Domains が Squarespace に売却されたので、kamasaki.net を Cloudflare に移管した。&lt;br>
 その際 MX レコードには特に問題がなかったが、GitHub Pages で構築したこのブログにアクセスできなくなっていた。&lt;/p>
 &lt;h1 id="解決法">解決法&lt;/h1>
 &lt;p>kmn4.github.io に向けていた CNAME レコードの proxy status を DNS only にすることで、無事 HTTPS アクセスができるようになった。&lt;/p>
@@ -41,8 +195,18 @@ Cloudflare の DNS レコード設定には &amp;ldquo;Proxy status&amp;rdquo; �
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-scala" data-lang="scala">&lt;span style="color:#66d9ef">sealed&lt;/span> &lt;span style="color:#66d9ef">trait&lt;/span> &lt;span style="color:#a6e22e">Exp&lt;/span>&lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#66d9ef">A&lt;/span>&lt;span style="color:#f92672">]&lt;/span>
-&lt;span style="color:#a6e22e">case&lt;/span> &lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#a6e22e">True&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">Exp&lt;/span>&lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#66d9ef">Boolean&lt;/span>&lt;span style="color:#f92672">]&lt;/span>
-&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#66d9ef">object&lt;/span> &lt;span style="color:#a6e22e">Flase&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">Exp&lt;/span>&lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#66d9ef">Boolean&lt;/span>&lt;span style="color:#f92672">]&lt;/span>
-&lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Eq&lt;/span>&lt;span style="color:#f92672">(&lt;/span>e1&lt;span style="color:#66d9ef">:&lt;/span> &lt;span style="color:#66d9ef">Exp&lt;/span>&lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#66d9ef">Int&lt;/span>&lt;span style="color:#f92672">],&lt;/span> e2&lt;span style="color:#66d9ef">:&lt;/span> &lt;span style="color:#66d9ef">Exp&lt;/span>&lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#66d9ef">Int&lt;/span>&lt;span style="color:#f92672">])&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">Exp&lt;/span>&lt;span style="color:#f92672">[&lt;/span>&lt;span style="color:#66d9ef">Boolean&lt;/span>&lt;span style="color:#f92672">]&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-scala" data-lang="scala">&lt;span class="k">sealed&lt;/span> &lt;span class="k">trait&lt;/span> &lt;span class="nc">Exp&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="kt">A&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;span class="nc">case&lt;/span> &lt;span class="k">object&lt;/span> &lt;span class="nc">True&lt;/span> &lt;span class="k">extends&lt;/span> &lt;span class="nc">Exp&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="kt">Boolean&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;span class="k">case&lt;/span> &lt;span class="k">object&lt;/span> &lt;span class="nc">Flase&lt;/span> &lt;span class="k">extends&lt;/span> &lt;span class="nc">Exp&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="kt">Boolean&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;span class="k">case&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">Eq&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">e1&lt;/span>&lt;span class="k">:&lt;/span> &lt;span class="kt">Exp&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="kt">Int&lt;/span>&lt;span class="o">],&lt;/span> &lt;span class="n">e2&lt;/span>&lt;span class="k">:&lt;/span> &lt;span class="kt">Exp&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="kt">Int&lt;/span>&lt;span class="o">])&lt;/span> &lt;span class="k">extends&lt;/span> &lt;span class="nc">Exp&lt;/span>&lt;span class="o">[&lt;/span>&lt;span class="kt">Boolean&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

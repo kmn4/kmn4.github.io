@@ -1,0 +1,275 @@
+<!doctype html><html lang=ja-jp dir=ltr>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="2 年半前、持て余していたドメインを使うため雑に構築し (、放置してい) た本ブログだが、なんとなく Anatole を使っていた。 でも色々と不満点があったため、">
+<title>Hugo のテーマを Stack に変えた</title>
+<link rel=canonical href=https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/>
+<link rel=stylesheet href=/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css><meta property="og:title" content="Hugo のテーマを Stack に変えた">
+<meta property="og:description" content="2 年半前、持て余していたドメインを使うため雑に構築し (、放置してい) た本ブログだが、なんとなく Anatole を使っていた。 でも色々と不満点があったため、">
+<meta property="og:url" content="https://blog.kamasaki.net/post/migrate-hugo-theme-to-stack/">
+<meta property="og:site_name" content="kamasaki.net">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:published_time" content="2023-12-27T21:56:43+09:00"><meta property="article:modified_time" content="2023-12-27T21:56:43+09:00">
+<meta name=twitter:title content="Hugo のテーマを Stack に変えた">
+<meta name=twitter:description content="2 年半前、持て余していたドメインを使うため雑に構築し (、放置してい) た本ブログだが、なんとなく Anatole を使っていた。 でも色々と不満点があったため、"><style>:root{--zh-font-family:"Noto Sans JP"}</style>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</head>
+<body class=article-page>
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
+<button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=メニューを開く・閉じる>
+<span class=hamburger-box>
+<span class=hamburger-inner></span>
+</span>
+</button>
+<header>
+<figure class=site-avatar>
+<a href=/>
+<img src=/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a>
+</figure>
+<div class=site-meta>
+<h1 class=site-name><a href=/>kamasaki.net</a></h1>
+<h2 class=site-description></h2>
+</div>
+</header><ol class=social-menu>
+<li>
+<a href=https://github.com/kmn4 target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+</a>
+</li>
+</ol><ol class=menu id=main-menu>
+<li>
+<a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Top</span>
+</a>
+</li>
+<li>
+<a href=/archives><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span>
+</a>
+</li>
+<li>
+<a href=/search><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span>
+</a>
+</li>
+<li>
+<a href=/about><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About</span>
+</a>
+</li>
+<div class=menu-bottom-section>
+<li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>ダークモード</span>
+</li>
+</div>
+</ol>
+</aside>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">目次</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#導入と設定の方法>導入と設定の方法</a></li>
+<li><a href=#日本語フォントが変>日本語フォントが変</a></li>
+<li><a href=#toc-を表示できない>TOC を表示できない</a></li>
+<li><a href=#おまけ>おまけ</a></li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+<main class="main full-width">
+<article class=main-article>
+<header class=article-header>
+<div class=article-details>
+<div class=article-title-wrapper>
+<h2 class=article-title>
+<a href=/post/migrate-hugo-theme-to-stack/>Hugo のテーマを Stack に変えた</a>
+</h2>
+</div>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2023-12-27</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<p>2 年半前、持て余していたドメインを使うため雑に構築し (、放置してい) た本ブログだが、なんとなく <a class=link href=https://github.com/lxndrblz/anatole target=_blank rel=noopener>Anatole</a> を使っていた。<br>
+でも色々と不満点があったため、以下の要件のもと別テーマに移行することとした。</p>
+<ul>
+<li>PC から見たときに記事本文の左右に十分な余白があり読みやすい</li>
+<li>検索機能がある</li>
+<li>タグ機能がある</li>
+<li>投稿年から記事を探せる</li>
+</ul>
+<p><a class=link href=https://themes.gohugo.io/tags/blog/ target=_blank rel=noopener>Hugo Themes</a> を眺め、スターが多く上記を満たし見た目もいい感じなものを探すと <a class=link href=https://themes.gohugo.io/themes/hugo-theme-stack/ target=_blank rel=noopener>Stack</a> が見つかった。</p>
+<p>ちなみに現状だとタグ機能も投稿年から探す機能も使っていないが、これは記事が少なすぎてまだ必要ないため。増えたら使う。</p>
+<h2 id=導入と設定の方法>導入と設定の方法</h2>
+<p>Ubuntu なら:</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-console data-lang=console><span class=gp>$ </span>sudo apt install golang-go hugo <span class=c1># Go が必須</span>
+<span class=gp>$ </span>hugo mod init kamasaki.net/blog
+<span class=gp>$ </span>hugo mod get github.com/CaiJimmy/hugo-theme-stack/v3 <span class=o>&amp;&amp;</span> hugo mod tidy
+<span class=gp>$ </span>mkdir -p config/_default <span class=o>&amp;&amp;</span> cat &lt;&lt;EOF &gt; config/_default/module.toml
+<span class=go>[[imports]]
+</span><span class=go>path = &#34;github.com/CaiJimmy/hugo-theme-stack/v3&#34;
+</span><span class=go>EOF
+</span></code></pre></td></tr></table>
+</div>
+</div><p>設定は <a class=link href=https://github.com/CaiJimmy/hugo-theme-stack-starter/tree/master/config/_default target=_blank rel=noopener>hugo-theme-stack-starter</a> を参考にすればよい。</p>
+<h2 id=日本語フォントが変>日本語フォントが変</h2>
+<p>Android の Firefox から見ると普通なのに、Windows の Firefox から見るとフォントに中国を感じる。<br>
+<code>about:preferences</code> から「ウェブページが指定したフォントを優先する」のチェックを外すと日本語らしくなるので、Stack がおかしなフォントを指定しているようだ。</p>
+<p><img src=/post/migrate-hugo-theme-to-stack/assets/zh-font.png width=237 height=145 srcset="/post/migrate-hugo-theme-to-stack/assets/zh-font_hu2a1319d88628e092800b62a71a21858a_10403_480x0_resize_box_3.png 480w, /post/migrate-hugo-theme-to-stack/assets/zh-font_hu2a1319d88628e092800b62a71a21858a_10403_1024x0_resize_box_3.png 1024w" loading=lazy alt=中国を感じるフォント class=gallery-image data-flex-grow=163 data-flex-basis=392px></p>
+<p>開発者ツールから有効なスタイルを調べると怪しいフォントを発見。中国語の言語コードって <code>zh</code> なんですね。<br>
+消してみると日本語フォントになったため、これを使わないように Stack を設定してやろう。</p>
+<p><img src=/post/migrate-hugo-theme-to-stack/assets/--zh-font-family.png width=355 height=202 srcset="/post/migrate-hugo-theme-to-stack/assets/--zh-font-family_hu6340b682662a7df7e8067b7c870543e5_15096_480x0_resize_box_3.png 480w, /post/migrate-hugo-theme-to-stack/assets/--zh-font-family_hu6340b682662a7df7e8067b7c870543e5_15096_1024x0_resize_box_3.png 1024w" loading=lazy alt=&ndash;zh-font-family class=gallery-image data-flex-grow=175 data-flex-basis=421px></p>
+<p><a class=link href=https://stack.jimmycai.com/config/header-footer#example-custom-font-family-for-article-content target=_blank rel=noopener>ドキュメント</a>にカスタマイズの具体例が載っているので参考にする。<br>
+今回は <code>--zh-font-family</code> を Noto Sans JP にしてしまう。<br>
+<code>layouts/partials/head/custom.html</code> に以下のようなコードを置いてやろう。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>style</span><span class=p>&gt;</span>
+    <span class=c>/* Overwrite CSS variable */</span>
+    <span class=p>:</span><span class=nd>root</span> <span class=p>{</span>
+        <span class=nv>--zh-font-family</span><span class=p>:</span> <span class=s2>&#34;Noto Sans JP&#34;</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>&lt;/</span><span class=nt>style</span><span class=p>&gt;</span>
+
+<span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+    <span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+        <span class=kr>const</span> <span class=nx>customFont</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>createElement</span><span class=p>(</span><span class=s1>&#39;link&#39;</span><span class=p>);</span>
+        <span class=nx>customFont</span><span class=p>.</span><span class=nx>href</span> <span class=o>=</span> <span class=s2>&#34;https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap&#34;</span><span class=p>;</span>
+    
+        <span class=nx>customFont</span><span class=p>.</span><span class=nx>type</span> <span class=o>=</span> <span class=s2>&#34;text/css&#34;</span><span class=p>;</span>
+        <span class=nx>customFont</span><span class=p>.</span><span class=nx>rel</span> <span class=o>=</span> <span class=s2>&#34;stylesheet&#34;</span><span class=p>;</span>
+    
+        <span class=nb>document</span><span class=p>.</span><span class=nx>head</span><span class=p>.</span><span class=nx>appendChild</span><span class=p>(</span><span class=nx>customFont</span><span class=p>);</span>
+    <span class=p>}());</span>
+<span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>ビルドし直すと Noto Sans JP が使われるようになった。</p>
+<p><img src=/post/migrate-hugo-theme-to-stack/assets/noto-sans-jp.png width=173 height=69 srcset="/post/migrate-hugo-theme-to-stack/assets/noto-sans-jp_hu07083d71c72cc42be88d99cdbac85c09_6541_480x0_resize_box_3.png 480w, /post/migrate-hugo-theme-to-stack/assets/noto-sans-jp_hu07083d71c72cc42be88d99cdbac85c09_6541_1024x0_resize_box_3.png 1024w" loading=lazy alt="みんな大好き Noto Sans JP" class=gallery-image data-flex-grow=250 data-flex-basis=601px></p>
+<p>しかし、言語コードとして <code>ja-jp</code> が指定されていたら自動で日本語フォントを使って欲しいので、暇があったら PR を出したいところ。</p>
+<h2 id=toc-を表示できない>TOC を表示できない</h2>
+<p><a class=link href=https://discourse.gohugo.io/t/why-does-markup-tableofcontents-startlevel-default-to-2/33963 target=_blank rel=noopener>SEO が理由で</a> <code>hugo-theme-stack-starter</code> の (Hugo の?) 初期設定だとレベル 1 の見出しは TOC に現れません<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=p>[</span><span class=nx>tableOfContents</span><span class=p>]</span>
+<span class=nx>endLevel</span> <span class=p>=</span> <span class=mi>4</span>
+<span class=nx>ordered</span> <span class=p>=</span> <span class=kc>true</span>
+<span class=nx>startLevel</span> <span class=p>=</span> <span class=mi>2</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>見出しはレベル 2 以上にしましょう。</p>
+<h2 id=おまけ>おまけ</h2>
+<p><a class=link href=https://gohugo.io/content-management/shortcodes/ target=_blank rel=noopener>Shortcodes</a>の使用例として、最近聴いてよかった曲を置いておく。</p>
+<div class=video-wrapper>
+<iframe loading=lazy src=https://www.youtube.com/embed/yfrBPWDTCpE allowfullscreen title="YouTube Video"></iframe>
+</div>
+<section class=footnotes role=doc-endnotes>
+<hr>
+<ol>
+<li id=fn:1 role=doc-endnote>
+<p>リンク先だと「タイトルがページ内の唯一の <code>&lt;h1></code> であるべき」と言われているが、Stack はタイトルに <code>&lt;h2></code> を使っているようで少し不自然だ。&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</section>
+<footer class=article-footer>
+</footer>
+</article>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
+2023 kamasaki.net
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+テーマ <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.21.0>Stack</a></b> は <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> によって設計されています。
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous>
+</main>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>
