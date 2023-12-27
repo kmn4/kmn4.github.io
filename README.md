@@ -1,5 +1,4 @@
 ```
-$ git submodule init
-$ git submodule update
-$ hugo server
+$ hugo mod get github.com/CaiJimmy/hugo-theme-stack/v3 && hugo mod tidy
+$ hugo server --buildDrafts
 ```

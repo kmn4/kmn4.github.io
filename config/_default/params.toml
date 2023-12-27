@@ -1,6 +1,12 @@
-## Widgets
-[[widgets.homepage]]
-type = "search"
+# Pages placed under these sections will be shown on homepage and archive page.
+mainSections = ["post"]
 
-[[widgets.homepage]]
+[dateFormat]
+published = "2006-01-02"
+lastUpdated = "2006-01-02T15:04:05"
+
+[article]
+readingTime = false
+
+[[widgets.page]]
 type = "toc"
