@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare 移管後に GitHub Pages が壊れた"
+title: "Cloudflare へのドメイン移管後に GitHub Pages が壊れた"
 date: 2023-12-26T20:57:50+09:00
 draft: false
 ---
