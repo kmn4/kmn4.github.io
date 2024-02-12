@@ -23,6 +23,25 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-deploy-blog
+          role-session-name: deploy-blog
+
+      - name: Sync to S3
+        env:
+          BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: |
+          aws s3 sync --delete ./public s3://$BUCKET/ --exclude '.git*'
+      
+      - name: Invalidate Cache
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_DISTRIBUTION_ID }}
+        run: |
+          aws s3 cloudfront create-invalidation --distribution-id $DISTRIBUTION --paths '/*'
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
